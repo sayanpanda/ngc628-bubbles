@@ -1,0 +1,67 @@
+# GitHub Copilot Log
+
+## 2025-06-12: Project Setup and Milestone 1 Implementation
+
+### User Prompt:
+```
+#fetch https://docs.astropy.org/en/stable/coordinates/index.html for reference, Implement Milestone 0 and Milestone 1 from the Task.md file.
+```
+
+### Actions Taken:
+1. Examined the data structure in jwst_bubble_properties_A.csv
+2. Reviewed README.txt to understand column meanings
+3. Created bubble_analysis.ipynb with the following components:
+   - Milestone 0: Setting up the notebook with proper documentation
+   - Milestone 1: Reading and modifying bubble data
+     - Converting coordinates from sexagesimal to degrees
+     - Adding new columns for angular sizes (arcseconds)
+4. Created a comprehensive README.md file
+5. Created this copilot_log.txt file
+
+### Implementation Details:
+- Used Astropy's Table to read the CSV file
+- Used SkyCoord to handle astronomical coordinate conversions
+- Calculated angular sizes based on the given distance (9.84 Mpc)
+- Created appropriate documentation for all steps
+
+### Note on Coordinate Units:
+According to the README.txt, the RA and DEC values are in degrees, minutes, seconds format (not hours, minutes, seconds as is common for RA). This was accounted for in the coordinate conversion code.
+
+## 2025-06-12: Milestone 2 Implementation and Troubleshooting
+
+### User Prompt:
+```
+Read the updated Task file and Implement the Milestone 2 #fetch https://docs.astropy.org/en/stable/io/fits/index.html and https://docs.astropy.org/en/stable/wcs/index.html and https://docs.astropy.org/en/stable/coordinates/index.html for context.
+```
+
+### Actions Taken:
+1. Added code to load and display JWST FITS file using astropy.io.fits
+2. Implemented WCS handling using astropy.wcs.WCS
+3. Created bubble overlays using matplotlib's Ellipse patches
+4. Added diagnostic code to troubleshoot coordinate transformations
+
+### Implementation Details:
+- Used WCS to convert from sky coordinates (RA/DEC) to pixel coordinates
+- Fixed handling of position angles by adjusting for astronomical convention
+- Added visualization options including full image and zoomed views
+- Implemented validation checks to ensure correct coordinate transformation
+- Added bubble count tracking to monitor successful overlay placement
+
+### Fixes for Overlay Issues:
+- Corrected position angle handling (90-PA_DEG) to account for astronomical vs. matplotlib conventions
+- Improved coordinate validation to ensure bubbles are within image boundaries
+- Enhanced zooming algorithm to focus on areas with visible bubbles
+- Added alternate visualization methods for troubleshooting
+
+## 2025-06-16: Milestone 3 Implementation
+
+### User Prompt:
+```Go ahead and implement the Milestone 3 from the TASKS.md file```
+
+### Actions Taken:
+- Created a function to generate DS9-compatible region files from bubble data
+- Generated a region file (ngc628_all_bubbles.reg) containing all 1694 bubbles in the dataset
+- Created a special region file (top_15_bubbles.reg) containing only the 15 largest bubbles
+- Implemented visualization of the top 15 largest bubbles on the JWST image
+- Added verification code to check the contents of the generated region files
+- Updated README.md with details of Milestone 3 implementation
